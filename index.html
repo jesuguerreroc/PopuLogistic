@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Crecimiento Poblacional Logístico</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navegación -->
+    <nav id="navbar">
+        <div class="nav-content">
+            <div class="logo">
+                <div class="logo-icon">📊</div>
+                <span>PopuLogistic</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#" class="nav-link active" onclick="showPage('home')" data-page="home">Inicio</a></li>
+                <li><a href="#" class="nav-link" onclick="showPage('theory')" data-page="theory">Teoría</a></li>
+                <li><a href="#" class="nav-link" onclick="showPage('simulator')" data-page="simulator">Simulador</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Página de Inicio -->
+    <div id="home" class="page active">
+        <div class="hero-section">
+            <div class="hero-content">
+                <span class="hero-badge">🧬 Ecuaciones Diferenciales</span>
+                <h1>Crecimiento Poblacional Logístico</h1>
+                <p>Explora cómo las poblaciones crecen y se estabilizan mediante el modelo logístico, una herramienta fundamental en ecología y biología matemática.</p>
+                <button class="cta-button" onclick="showPage('simulator')">Ir al Simulador →</button>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📈</div>
+                    <h3>Visualización Interactiva</h3>
+                    <p>Observa en tiempo real cómo los parámetros del modelo afectan el comportamiento de la población a través de gráficas dinámicas.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">⚙️</div>
+                    <h3>Control de Parámetros</h3>
+                    <p>Ajusta la población inicial, tasa de crecimiento y capacidad de carga para explorar diferentes escenarios de crecimiento poblacional.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🔬</div>
+                    <h3>Análisis Comparativo</h3>
+                    <p>Compara múltiples escenarios simultáneamente para entender el impacto de cada parámetro en el comportamiento del sistema.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">📚</div>
+                    <h3>Fundamento Teórico</h3>
+                    <p>Aprende los conceptos matemáticos detrás del modelo logístico y sus aplicaciones en el mundo real.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Página de Teoría -->
+    <div id="theory" class="page">
+        <div class="theory-page">
+            <div class="theory-content">
+                <h2>Modelo Logístico de Crecimiento Poblacional</h2>
+
+                <h3>¿Qué es el Modelo Logístico?</h3>
+                <p>El modelo logístico es una ecuación diferencial que describe el crecimiento de una población considerando limitaciones ambientales. A diferencia del crecimiento exponencial ilimitado, este modelo reconoce que los recursos son finitos.</p>
+
+                <div class="formula-box">
+                    <strong>Fórmula del Modelo Logístico:</strong><br><br>
+                    P(t) = K / [1 + ((K - P₀) / P₀) × e^(-rt)]
+                </div>
+
+                <h3>Parámetros del Modelo</h3>
+
+                <div class="parameter">
+                    <strong>P₀ (Población Inicial)</strong><br>
+                    Es el número de individuos al inicio de la observación (cuando t = 0). Este valor determina el punto de partida de la curva de crecimiento.
+                </div>
+
+                <div class="parameter">
+                    <strong>r (Tasa de Crecimiento)</strong><br>
+                    Representa la tasa intrínseca de crecimiento de la población. Un valor más alto indica un crecimiento más rápido hacia la capacidad de carga.
+                </div>
+
+                <div class="parameter">
+                    <strong>K (Capacidad de Carga)</strong><br>
+                    Es el límite máximo de individuos que el ambiente puede soportar de manera sostenible. Representa las limitaciones de recursos, espacio y otros factores ambientales.
+                </div>
+
+                <h3>Comportamiento de la Curva</h3>
+                <p>La curva logística tiene forma de "S" (sigmoide) y presenta tres fases características:</p>
+                <ul>
+                    <li><strong>Fase inicial:</strong> Crecimiento lento cuando la población es pequeña</li>
+                    <li><strong>Fase exponencial:</strong> Crecimiento acelerado en la zona intermedia</li>
+                    <li><strong>Fase de estabilización:</strong> El crecimiento se desacelera al acercarse a K</li>
+                </ul>
+
+                <h3>Aplicaciones Prácticas</h3>
+                <p>Este modelo se utiliza en diversos campos:</p>
+                <ul>
+                    <li>🌿 <strong>Ecología:</strong> Estudiar poblaciones de animales y plantas</li>
+                    <li>🏙️ <strong>Urbanismo:</strong> Planificar el crecimiento de ciudades</li>
+                    <li>💉 <strong>Epidemiología:</strong> Modelar la propagación de enfermedades</li>
+                    <li>📈 <strong>Economía:</strong> Analizar la adopción de tecnologías</li>
+                </ul>
+
+                <button class="cta-button" onclick="showPage('simulator')" style="margin-top: 2rem;">
+                    Probar el Simulador →
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Página del Simulador -->
+    <div id="simulator" class="page">
+        <div class="simulator-page">
+            <div class="simulator-header">
+                <h2>Simulador Interactivo</h2>
+                <p>Ajusta los parámetros y observa cómo cambia el comportamiento del modelo logístico</p>
+            </div>
+
+            <div class="simulator-layout">
+                <div class="controls-panel">
+                    <div class="controls-header">
+                        <span style="font-size: 1.5rem;">⚙️</span>
+                        <h3>Parámetros</h3>
+                    </div>
+
+                    <div class="control-group">
+                        <label>Población Inicial (P₀)</label>
+                        <input type="range" class="slider" id="p0" min="1" max="1000" value="50" oninput="updateValue('p0')">
+                        <span class="value-display" id="p0-value">50</span>
+                    </div>
+
+                    <div class="control-group">
+                        <label>Tasa de Crecimiento (r)</label>
+                        <input type="range" class="slider" id="r" min="0.01" max="1" step="0.01" value="0.1" oninput="updateValue('r')">
+                        <span class="value-display" id="r-value">0.1</span>
+                    </div>
+
+                    <div class="control-group">
+                        <label>Capacidad de Carga (K)</label>
+                        <input type="range" class="slider" id="k" min="100" max="10000" value="1000" oninput="updateValue('k')">
+                        <span class="value-display" id="k-value">1000</span>
+                    </div>
+
+                    <div class="control-group">
+                        <label>Tiempo de Simulación (años)</label>
+                        <input type="range" class="slider" id="time" min="10" max="200" value="100" oninput="updateValue('time')">
+                        <span class="value-display" id="time-value">100</span>
+                    </div>
+
+                    <div class="button-group">
+                        <button class="btn btn-primary" onclick="addScenario()">
+                            <span>➕</span> Agregar Escenario
+                        </button>
+                        <button class="btn btn-secondary" onclick="updateChart()">
+                            <span>🔄</span> Actualizar Gráfica
+                        </button>
+                        <button class="btn btn-danger" onclick="clearScenarios()">
+                            <span>🗑️</span> Limpiar Todo
+                        </button>
+                    </div>
+                </div>
+
+                <div class="chart-panel">
+                    <div class="chart-header">
+                        <span style="font-size: 1.5rem;">📈</span>
+                        <h3>Gráfica de Crecimiento</h3>
+                    </div>
+                    <canvas id="populationChart"></canvas>
+                </div>
+            </div>
+
+            <div class="bottom-layout">
+                <div class="scenarios-panel">
+                    <div class="panel-header">
+                        <span style="font-size: 1.5rem;">📋</span>
+                        <h3>Escenarios</h3>
+                    </div>
+                    <div id="scenariosList">
+                        <div class="empty-state">
+                            <div class="empty-state-icon">📊</div>
+                            <p>No hay escenarios agregados</p>
+                            <small>Ajusta los parámetros y haz clic en "Agregar Escenario"</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="interpretation-panel">
+                    <div class="panel-header">
+                        <span style="font-size: 1.5rem;">🔍</span>
+                        <h3>Análisis</h3>
+                    </div>
+                    <div id="interpretation">
+                        <div class="empty-state">
+                            <div class="empty-state-icon">📈</div>
+                            <p>Sin datos para analizar</p>
+                            <small>Agrega un escenario para ver el análisis detallado</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
