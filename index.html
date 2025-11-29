@@ -289,6 +289,30 @@
                         <input type="range" class="slider" id="time" min="10" max="200" value="100" oninput="updateValue('time')">
                         <span class="value-display" id="time-value">100</span>
                     </div>
+                    
+                    <div class="info-box">
+              <h4>🧬 Modelo logistico</h4>
+              <p>
+                <strong
+                  >P(t) = K / (1 + ((K - P₀) / P₀) · e<sup>-rt</sup>)</strong
+                >
+              </p>
+              <ul>
+                <li><strong>P₀:</strong> Poblacion inicial</li>
+                <li><strong>r:</strong> Tasa de crecimiento</li>
+                <li>
+                  <strong>K:</strong> Capacidad de carga (máximo que puede
+                  soportar el ambiente)
+                </li>
+                <li><strong>t:</strong> Tiempo en años</li>
+              </ul>
+              <p style="margin-top: 1rem; font-size: 0.85rem; opacity: 0.9">
+                Este modelo describe un crecimiento realista: al inicio es
+                rápido, pero se desacelera a medida que la población se acerca a
+                su límite ambiental. Representa situaciones con recursos
+                limitados.
+              </p>
+            </div>
 
                     <div class="button-group">
                         <button class="btn btn-primary" onclick="addScenario()">
