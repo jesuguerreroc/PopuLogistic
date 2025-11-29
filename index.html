@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simulador de Crecimiento Poblacional Logístico</title>
+    <title>Simulador de Crecimiento Poblacional</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -17,8 +17,10 @@
             </div>
             <ul class="nav-links">
                 <li><a href="#" class="nav-link active" onclick="showPage('home')" data-page="home">Inicio</a></li>
-                <li><a href="#" class="nav-link" onclick="showPage('theory')" data-page="theory">Teoría</a></li>
-                <li><a href="#" class="nav-link" onclick="showPage('simulator')" data-page="simulator">Simulador</a></li>
+                <li><a href="#" class="nav-link" onclick="showPage('theory')" data-page="theory">Teoría Logística</a></li>
+                <li><a href="#" class="nav-link" onclick="showPage('simulator')" data-page="simulator">Simulador Logístico</a></li>
+                <li><a href="#" class="nav-link" onclick="showPage('theory-exp')" data-page="theory-exp">Teoría Exponencial</a></li>
+                <li><a href="#" class="nav-link" onclick="showPage('exponential')" data-page="exponential">Simulador Exponencial</a></li>
             </ul>
         </div>
     </nav>
@@ -28,34 +30,43 @@
         <div class="hero-section">
             <div class="hero-content">
                 <span class="hero-badge">🧬 Ecuaciones Diferenciales</span>
-                <h1>Crecimiento Poblacional Logístico</h1>
-                <p>Explora cómo las poblaciones crecen y se estabilizan mediante el modelo logístico, una herramienta fundamental en ecología y biología matemática.</p>
-                <button class="cta-button" onclick="showPage('simulator')">Ir al Simulador →</button>
+                <h1>Modelos de Crecimiento Poblacional</h1>
+                <p>Explora cómo las poblaciones crecen mediante dos modelos fundamentales: el exponencial para bacterias y el logístico para poblaciones con limitaciones ambientales.</p>
+                <div class="cta-buttons">
+                    <button class="cta-button" onclick="showPage('exponential')">
+                        <span>🦠</span> Crecimiento Exponencial
+                    </button>
+                    <button class="cta-button secondary" onclick="showPage('simulator')">
+                        <span>📊</span> Crecimiento Logístico
+                    </button>
+                </div>
             </div>
 
             <div class="features-grid">
-                <div class="feature-card">
+                <div class="feature-card" onclick="showPage('exponential')" style="cursor: pointer;">
+                    <div class="feature-icon">🦠</div>
+                    <h3>Crecimiento Exponencial</h3>
+                    <p>Simula el crecimiento de bacterias sin limitaciones. Ideal para entender multiplicación celular en condiciones óptimas.</p>
+                    <div class="card-badge">P(t) = P₀e^(rt)</div>
+                </div>
+
+                <div class="feature-card" onclick="showPage('simulator')" style="cursor: pointer;">
                     <div class="feature-icon">📈</div>
-                    <h3>Visualización Interactiva</h3>
-                    <p>Observa en tiempo real cómo los parámetros del modelo afectan el comportamiento de la población a través de gráficas dinámicas.</p>
+                    <h3>Modelo Logístico</h3>
+                    <p>Analiza poblaciones con recursos limitados. Observa cómo el crecimiento se estabiliza al alcanzar la capacidad de carga.</p>
+                    <div class="card-badge">Curva en forma de S</div>
                 </div>
 
                 <div class="feature-card">
                     <div class="feature-icon">⚙️</div>
-                    <h3>Control de Parámetros</h3>
-                    <p>Ajusta la población inicial, tasa de crecimiento y capacidad de carga para explorar diferentes escenarios de crecimiento poblacional.</p>
+                    <h3>Parámetros Ajustables</h3>
+                    <p>Modifica población inicial, tasas de crecimiento y capacidad de carga para explorar diferentes escenarios biológicos.</p>
                 </div>
 
                 <div class="feature-card">
                     <div class="feature-icon">🔬</div>
-                    <h3>Análisis Comparativo</h3>
-                    <p>Compara múltiples escenarios simultáneamente para entender el impacto de cada parámetro en el comportamiento del sistema.</p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">📚</div>
-                    <h3>Fundamento Teórico</h3>
-                    <p>Aprende los conceptos matemáticos detrás del modelo logístico y sus aplicaciones en el mundo real.</p>
+                    <h3>Análisis en Tiempo Real</h3>
+                    <p>Compara múltiples escenarios simultáneamente y obtén análisis detallados del comportamiento de cada modelo.</p>
                 </div>
             </div>
         </div>
@@ -116,11 +127,135 @@
         </div>
     </div>
 
-    <!-- Página del Simulador -->
+    <!-- Página de Teoría Exponencial -->
+    <div id="theory-exp" class="page">
+        <div class="theory-page">
+            <div class="theory-content">
+                <h2>🦠 Modelo Exponencial de Crecimiento Bacteriano</h2>
+
+                <h3>¿Qué es el Modelo Exponencial?</h3>
+                <p>El modelo exponencial es la ecuación diferencial más simple para describir el crecimiento poblacional. Asume que la tasa de crecimiento es proporcional al tamaño de la población y que no existen limitaciones ambientales que restrinjan el crecimiento.</p>
+
+                <div class="formula-box">
+                    <strong>Fórmula del Modelo Exponencial:</strong><br><br>
+                    P(t) = P₀ · e^(rt)
+                </div>
+
+                <h3>Derivación Matemática</h3>
+                <p>El modelo exponencial surge de una ecuación diferencial simple:</p>
+                <div class="parameter">
+                    <strong>dP/dt = rP</strong><br><br>
+                    Esta ecuación expresa que la tasa de cambio de la población (dP/dt) es proporcional a la población actual (P), donde r es la constante de proporcionalidad o tasa de crecimiento intrínseca.
+                </div>
+
+                <h3>Parámetros del Modelo</h3>
+
+                <div class="parameter">
+                    <strong>P₀ (Población Inicial)</strong><br>
+                    Es el número de individuos (o células bacterianas) al inicio del experimento cuando t = 0. En microbiología, esto representa el inóculo inicial del cultivo.
+                </div>
+
+                <div class="parameter">
+                    <strong>r (Tasa de Crecimiento Específica)</strong><br>
+                    Representa la tasa de crecimiento por unidad de tiempo por célula. Se mide típicamente en h⁻¹ (por hora). Un valor de r = 0.5 h⁻¹ significa que la población crece un 50% por hora.
+                </div>
+
+                <div class="parameter">
+                    <strong>t (Tiempo)</strong><br>
+                    El tiempo transcurrido desde el inicio del cultivo, generalmente medido en horas para bacterias de crecimiento rápido.
+                </div>
+
+                <h3>Tiempo de Duplicación</h3>
+                <p>Un concepto clave en el crecimiento exponencial es el tiempo de duplicación (td), el tiempo que tarda la población en duplicarse:</p>
+                <div class="formula-box" style="font-size: 1.1rem;">
+                    <strong>Tiempo de Duplicación:</strong><br><br>
+                    td = ln(2) / r ≈ 0.693 / r
+                </div>
+                <p>Por ejemplo, si r = 0.5 h⁻¹, entonces td = 1.386 horas (aproximadamente 83 minutos).</p>
+
+                <h3>Fases del Crecimiento Bacteriano</h3>
+                <p>En un cultivo bacteriano real, se observan diferentes fases:</p>
+                <ul>
+                    <li><strong>🔵 Fase lag:</strong> Adaptación inicial, sin crecimiento significativo</li>
+                    <li><strong>🟢 Fase exponencial (log):</strong> Crecimiento exponencial máximo (descrito por este modelo)</li>
+                    <li><strong>🟡 Fase estacionaria:</strong> Crecimiento se detiene por limitación de recursos</li>
+                    <li><strong>🔴 Fase de muerte:</strong> Disminución de células viables</li>
+                </ul>
+                <p><strong>Importante:</strong> El modelo exponencial solo es válido durante la fase exponencial (log), cuando hay abundancia de nutrientes y espacio.</p>
+
+                <h3>Comparación con el Modelo Logístico</h3>
+                <div class="comparison-table">
+                    <div class="comparison-row">
+                        <div class="comparison-cell">
+                            <h4>🦠 Modelo Exponencial</h4>
+                            <ul>
+                                <li>✓ Crecimiento ilimitado</li>
+                                <li>✓ No considera recursos</li>
+                                <li>✓ Válido a corto plazo</li>
+                                <li>✓ Ideal para bacterias en fase log</li>
+                            </ul>
+                        </div>
+                        <div class="comparison-cell">
+                            <h4>📊 Modelo Logístico</h4>
+                            <ul>
+                                <li>✓ Crecimiento limitado</li>
+                                <li>✓ Considera capacidad de carga</li>
+                                <li>✓ Válido a largo plazo</li>
+                                <li>✓ Ideal para poblaciones con recursos limitados</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Aplicaciones Prácticas</h3>
+                <p>Este modelo se utiliza en diversos campos de la biotecnología y medicina:</p>
+                <ul>
+                    <li>🧫 <strong>Microbiología:</strong> Estimar crecimiento bacteriano en cultivos de laboratorio</li>
+                    <li>💊 <strong>Farmacología:</strong> Calcular tiempo de producción de antibióticos por fermentación</li>
+                    <li>🍞 <strong>Industria alimentaria:</strong> Predecir crecimiento de levaduras en panificación</li>
+                    <li>⚕️ <strong>Epidemiología:</strong> Modelar la fase inicial de propagación de infecciones</li>
+                    <li>🧬 <strong>Biotecnología:</strong> Optimizar condiciones de cultivo para producción de proteínas</li>
+                </ul>
+
+                <h3>Limitaciones del Modelo</h3>
+                <div class="parameter" style="border-left-color: #ef4444; background: #fef2f2;">
+                    <strong>⚠️ Advertencias Importantes:</strong><br><br>
+                    • El modelo exponencial NO puede predecir crecimiento a largo plazo<br>
+                    • En la realidad, SIEMPRE hay limitaciones de espacio y nutrientes<br>
+                    • Después de algunas horas/días, el crecimiento se desacelera inevitablemente<br>
+                    • Para predicciones a largo plazo, usar el modelo logístico
+                </div>
+
+                <h3>Ejemplo Práctico</h3>
+                <p>Imagina un cultivo de <em>E. coli</em> con las siguientes características:</p>
+                <div class="parameter" style="background: #f0fdf4; border-left-color: #10b981;">
+                    <strong>📝 Datos del experimento:</strong><br><br>
+                    • Población inicial: P₀ = 100 células<br>
+                    • Tasa de crecimiento: r = 0.6 h⁻¹<br>
+                    • Tiempo de duplicación: td = 0.693/0.6 ≈ 1.16 horas (70 minutos)<br><br>
+                    <strong>Predicciones:</strong><br>
+                    • Después de 2 horas: P(2) = 100 × e^(0.6×2) ≈ 332 células<br>
+                    • Después de 5 horas: P(5) = 100 × e^(0.6×5) ≈ 2,009 células<br>
+                    • Después de 10 horas: P(10) = 100 × e^(0.6×10) ≈ 40,343 células
+                </div>
+
+                <div class="cta-buttons" style="margin-top: 3rem; justify-content: center;">
+                    <button class="cta-button" onclick="showPage('exponential')">
+                        Probar el Simulador Exponencial →
+                    </button>
+                    <button class="cta-button secondary" onclick="showPage('theory')">
+                        Ver Teoría Logística
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Página del Simulador Logístico -->
     <div id="simulator" class="page">
         <div class="simulator-page">
             <div class="simulator-header">
-                <h2>Simulador Interactivo</h2>
+                <h2>Simulador Logístico Interactivo</h2>
                 <p>Ajusta los parámetros y observa cómo cambia el comportamiento del modelo logístico</p>
             </div>
 
@@ -202,6 +337,106 @@
                             <div class="empty-state-icon">📈</div>
                             <p>Sin datos para analizar</p>
                             <small>Agrega un escenario para ver el análisis detallado</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Página del Simulador Exponencial -->
+    <div id="exponential" class="page">
+        <div class="simulator-page">
+            <div class="simulator-header">
+                <h2>🦠 Simulador de Crecimiento Exponencial de Bacterias</h2>
+                <p>Modela el crecimiento bacteriano sin restricciones ambientales</p>
+            </div>
+
+            <div class="simulator-layout">
+                <div class="controls-panel">
+                    <div class="controls-header">
+                        <span style="font-size: 1.5rem;">🦠</span>
+                        <h3>Parámetros Bacterianos</h3>
+                    </div>
+
+                    <div class="control-group">
+                        <label>Población Inicial (P₀) - células</label>
+                        <input type="range" class="slider" id="exp-p0" min="1" max="1000" value="100" oninput="updateExpValue('exp-p0')">
+                        <span class="value-display" id="exp-p0-value">100</span>
+                    </div>
+
+                    <div class="control-group">
+                        <label>Tasa de Crecimiento (r) - por hora</label>
+                        <input type="range" class="slider" id="exp-r" min="0.1" max="2" step="0.1" value="0.5" oninput="updateExpValue('exp-r')">
+                        <span class="value-display" id="exp-r-value">0.5</span>
+                    </div>
+
+                    <div class="control-group">
+                        <label>Tiempo de Simulación (horas)</label>
+                        <input type="range" class="slider" id="exp-time" min="1" max="24" value="10" oninput="updateExpValue('exp-time')">
+                        <span class="value-display" id="exp-time-value">10</span>
+                    </div>
+
+                    <div class="info-box">
+                        <h4>🧬 Modelo Exponencial</h4>
+                        <p><strong>P(t) = P₀ · e^(rt)</strong></p>
+                        <ul>
+                            <li><strong>P₀:</strong> Bacterias iniciales</li>
+                            <li><strong>r:</strong> Tasa de crecimiento</li>
+                            <li><strong>t:</strong> Tiempo en horas</li>
+                        </ul>
+                        <p style="margin-top: 1rem; font-size: 0.85rem; opacity: 0.9;">
+                            Este modelo asume condiciones ideales: nutrientes ilimitados, espacio suficiente y ausencia de factores inhibidores.
+                        </p>
+                    </div>
+
+                    <div class="button-group">
+                        <button class="btn btn-primary" onclick="addExpScenario()">
+                            <span>➕</span> Agregar Cultivo
+                        </button>
+                        <button class="btn btn-secondary" onclick="updateExpChart()">
+                            <span>🔄</span> Actualizar Gráfica
+                        </button>
+                        <button class="btn btn-danger" onclick="clearExpScenarios()">
+                            <span>🗑️</span> Limpiar Todo
+                        </button>
+                    </div>
+                </div>
+
+                <div class="chart-panel">
+                    <div class="chart-header">
+                        <span style="font-size: 1.5rem;">📊</span>
+                        <h3>Crecimiento Bacteriano</h3>
+                    </div>
+                    <canvas id="exponentialChart"></canvas>
+                </div>
+            </div>
+
+            <div class="bottom-layout">
+                <div class="scenarios-panel">
+                    <div class="panel-header">
+                        <span style="font-size: 1.5rem;">🧪</span>
+                        <h3>Cultivos Bacterianos</h3>
+                    </div>
+                    <div id="expScenariosList">
+                        <div class="empty-state">
+                            <div class="empty-state-icon">🦠</div>
+                            <p>No hay cultivos agregados</p>
+                            <small>Ajusta los parámetros y haz clic en "Agregar Cultivo"</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="interpretation-panel">
+                    <div class="panel-header">
+                        <span style="font-size: 1.5rem;">🔬</span>
+                        <h3>Análisis Microbiológico</h3>
+                    </div>
+                    <div id="expInterpretation">
+                        <div class="empty-state">
+                            <div class="empty-state-icon">📈</div>
+                            <p>Sin datos para analizar</p>
+                            <small>Agrega un cultivo para ver el análisis detallado</small>
                         </div>
                     </div>
                 </div>

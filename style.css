@@ -152,9 +152,16 @@ nav.scrolled {
     font-size: 1.25rem;
     color: var(--text-gray);
     margin-bottom: 2.5rem;
-    max-width: 600px;
+    max-width: 700px;
     margin-left: auto;
     margin-right: auto;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .cta-button {
@@ -168,12 +175,25 @@ nav.scrolled {
     cursor: pointer;
     transition: all 0.2s ease;
     box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.cta-button.secondary {
+    background: var(--accent);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
 }
 
 .cta-button:hover {
     background: var(--primary-dark);
     transform: translateY(-2px);
     box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
+}
+
+.cta-button.secondary:hover {
+    background: #059669;
+    box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3);
 }
 
 /* Features Grid */
@@ -221,6 +241,18 @@ nav.scrolled {
     color: var(--text-gray);
     font-size: 0.95rem;
     line-height: 1.6;
+}
+
+.card-badge {
+    display: inline-block;
+    background: var(--bg-light);
+    color: var(--primary);
+    padding: 0.4rem 0.9rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-top: 1rem;
+    font-family: 'Courier New', monospace;
 }
 
 /* Página de Teoría */
@@ -596,6 +628,98 @@ nav.scrolled {
     opacity: 0.5;
 }
 
+/* Info box para simulador exponencial */
+.info-box {
+    background: var(--bg-light);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+}
+
+.info-box h4 {
+    color: var(--text-dark);
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.info-box p {
+    color: var(--text-dark);
+    font-size: 0.95rem;
+    margin-bottom: 0.75rem;
+}
+
+.info-box ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0.75rem 0;
+}
+
+.info-box ul li {
+    color: var(--text-gray);
+    font-size: 0.9rem;
+    padding: 0.25rem 0;
+}
+
+.info-box ul li strong {
+    color: var(--text-dark);
+}
+/* Tabla de comparación */
+.comparison-table {
+    margin: 2rem 0;
+}
+
+.comparison-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.comparison-cell {
+    background: var(--bg-light);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 2px solid var(--border);
+    transition: all 0.3s ease;
+}
+
+.comparison-cell:hover {
+    border-color: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px var(--shadow);
+}
+
+.comparison-cell h4 {
+    color: var(--text-dark);
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--border);
+}
+
+.comparison-cell ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.comparison-cell ul li {
+    padding: 0.5rem 0;
+    color: var(--text-gray);
+    padding-left: 0;
+}
+
+.comparison-cell ul li:before {
+    content: "";
+    margin-right: 0.5rem;
+}
+
+/* Responsive para tabla de comparación */
+@media (max-width: 768px) {
+    .comparison-row {
+        grid-template-columns: 1fr;
+    }
+}
 /* Responsive */
 @media (max-width: 1024px) {
     .simulator-layout {
